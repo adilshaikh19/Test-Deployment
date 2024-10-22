@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     // Call the backend API using the proxy
-    axios.get('/')
+    axios.get('https://test-deployment-ejfk.vercel.app/')
       .then(response => setData(response.data.message))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
