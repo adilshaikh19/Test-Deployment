@@ -1,18 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+const apiUrl = process.env.NODE_ENV === 'production'
+  ? 'https://your-backend-url.com'
+  : 'http://localhost:5000';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Proxy API requests to your backend
-      "/": {
-        target: "http://localhost:5000",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
+      '/': apiUrl
+    }
+  }
 });
